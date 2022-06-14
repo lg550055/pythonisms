@@ -14,34 +14,28 @@ class BinaryTree:
             while q:
                 current = q.pop(0)
                 yield current.value
-                q.append(current.left)
-                q.append(current.right)
+                if current.left:
+                    q.append(current.left)
+                if current.right:
+                    q.append(current.right)
         return value_generator()
 
     def __str__(self):
         out = "Root-> "
         for value in self:
-            out += f"[ {value} ], "
+            out += f"[{value}], "
         return out + "end"
 
     def __len__(self):
         return self.length
 
     def __eq__(self, other):
-        # consider https://docs.python.org/3/library/functools.html#functools.total_ordering for Data collections
         return list(self) == list(other)
 
     def __getitem__(self, index):
-        # return list(self)[index]
-        # IF you have an efficient way to track length then check here
-        # if len(self):
-        #     raise IndexError
         if index < 0:
             raise IndexError
-        for i, item in enumerate(self):
-            if i == index:
-                return item
-        raise IndexError
+        return list(self)[index]
 
     def insert(self, value):
         node = Node(value)
@@ -66,21 +60,3 @@ class Node:
         self.value = value
         self.left = left
         self.right = right
-
-
-if __name__ == "__main__":
-    foods = BinaryTree(["apple","banana","cucumber"])
-    first_food = foods[0]
-    for food in foods:
-        print(food)
-
-    def gen():
-        i = 0
-        while True:
-            yield i
-            i += 1
-
-    num_gtr = gen()
-
-    for i in range(100):
-        print(next(num_gtr))
