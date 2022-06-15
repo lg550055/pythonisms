@@ -29,3 +29,13 @@ Created a class Binary Tree with the following methods:
 
 ### Decorators
 
+Creates a number of sample decorators, which can be used individually or cummulatively:
+
+- @timer -calculates function run time
+- @procrastinate -delays code execution
+- @debug -prints information on the called function, e.g. args and signature
+- @truncate -truncates the returned string at the beginning or end
+
+---
+
+
