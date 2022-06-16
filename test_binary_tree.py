@@ -11,6 +11,11 @@ def test_build_tree():
   assert str(tree) == 'Root-> [a], [b], [c], end'
 
 
+def test_build_longer_tree():
+  tree = BinaryTree(['a','b','c','d','e'])
+  assert str(tree) == 'Root-> [a], [b], [c], [d], [e], end'
+
+
 def test_build_tree_len():
   tree = BinaryTree(['a','b','c'])
   assert len(tree) == 3
